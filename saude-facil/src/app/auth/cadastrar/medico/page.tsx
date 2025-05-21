@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { useCreateDoctorForm } from '@/hooks/form/use-create-doctor-form'
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useCreateDoctorForm } from "@/hooks/form/use-create-doctor-form";
 
 export default function MedicoForm() {
   const { register, handleSubmit, errors, isSubmitting, onSubmit } =
-    useCreateDoctorForm()
+    useCreateDoctorForm();
 
   return (
     <Card className="w-[80vw] max-w-xl rounded-2xl p-8 shadow-lg">
@@ -30,7 +30,7 @@ export default function MedicoForm() {
       >
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.nome')}
+            {...register("medico.nome")}
             type="text"
             placeholder="Nome completo"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -44,7 +44,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.cpf')}
+            {...register("medico.cpf")}
             type="text"
             placeholder="CPF"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -58,7 +58,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.crm')}
+            {...register("medico.crm")}
             type="text"
             placeholder="Número de Registro Médico (CRM)"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -72,7 +72,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('email')}
+            {...register("email")}
             type="email"
             placeholder="E-mail"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -84,7 +84,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('senha')}
+            {...register("senha")}
             type="password"
             placeholder="Senha"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -96,7 +96,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.telefone')}
+            {...register("medico.telefone")}
             type="text"
             placeholder="Telefone"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -110,7 +110,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.dataNascimento')}
+            {...register("medico.dataNascimento")}
             type="date"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
           />
@@ -123,7 +123,7 @@ export default function MedicoForm() {
 
         <div className="flex flex-col gap-1">
           <Input
-            {...register('medico.especialidade')}
+            {...register("medico.especialidade")}
             type="text"
             placeholder="Especialidade"
             className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -140,9 +140,9 @@ export default function MedicoForm() {
           disabled={isSubmitting}
           className="mt-2 w-full rounded-full text-base font-semibold"
         >
-          {isSubmitting ? 'Criando conta...' : 'Criar conta'}
+          {isSubmitting ? "Criando conta..." : "Criar conta"}
         </Button>
       </form>
     </Card>
-  )
+  );
 }

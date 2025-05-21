@@ -1,7 +1,7 @@
 export interface ChartTooltipProps {
-  active?: boolean
+  active?: boolean;
   payload?: Array<{
-    value: number
-    name: string
-  }>
+    value: number;
+    name: string;
+  }>;
 }

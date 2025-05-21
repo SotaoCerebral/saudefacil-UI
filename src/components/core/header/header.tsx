@@ -1,19 +1,19 @@
-'use client'
+"use client";
 
-import { Menu } from 'lucide-react'
-import Image from 'next/image'
-import Link from 'next/link'
-import { Button } from '@/components/ui/button'
+import { Menu } from "lucide-react";
+import Image from "next/image";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
   SheetTrigger,
-} from '@/components/ui/sheet'
+} from "@/components/ui/sheet";
 
-import { MobileNavMenu, NavMenu } from './nav-menu'
-import { ProfileDropdown } from './profile-dropdown'
+import { MobileNavMenu, NavMenu } from "./nav-menu";
+import { ProfileDropdown } from "./profile-dropdown";
 
 function Header() {
   return (
@@ -80,7 +80,7 @@ function Header() {
         </div>
       </div>
     </header>
-  )
+  );
 }
 
-export { Header }
+export { Header };

@@ -1,24 +1,24 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from "@tanstack/react-query";
 
-import { api } from '@/lib/axios'
+import { api } from "@/lib/axios";
 
 interface Time {
-  id: number
-  medicoId: number
-  data: string
-  hora: string
-  disponivel: boolean
+  id: number;
+  medicoId: number;
+  data: string;
+  hora: string;
+  disponivel: boolean;
 }
 
 function useTimes() {
   return useQuery({
-    queryKey: ['times'],
+    queryKey: ["times"],
     queryFn: async () => {
-      const response = await api.get('/horarios-disponiveis')
+      const response = await api.get("/horarios-disponiveis");
 
-      return response.data as Time[]
+      return response.data as Time[];
     },
-  })
+  });
 }
 
-export { useTimes }
+export { useTimes };

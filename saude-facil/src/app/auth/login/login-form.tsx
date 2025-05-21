@@ -1,15 +1,15 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button'
-import { Card } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { useLoginForm } from '@/hooks/form/use-login-form'
+import { Button } from "@/components/ui/button";
+import { Card } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useLoginForm } from "@/hooks/form/use-login-form";
 
 export function LoginForm() {
   const { register, handleSubmit, errors, isSubmitting, onSubmit } =
-    useLoginForm()
+    useLoginForm();
 
   return (
     <Card className="flex w-[80vw] max-w-xl flex-col items-center rounded-2xl p-8 shadow-lg">
@@ -24,7 +24,7 @@ export function LoginForm() {
           placeholder="E-mail"
           required
           className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
-          {...register('email')}
+          {...register("email")}
         />
         {errors.email && (
           <span className="text-sm text-red-500">{errors.email.message}</span>
@@ -35,7 +35,7 @@ export function LoginForm() {
           placeholder="Senha"
           required
           className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
-          {...register('password')}
+          {...register("password")}
         />
         {errors.password && (
           <span className="text-sm text-red-500">
@@ -47,7 +47,7 @@ export function LoginForm() {
           className="mt-2 w-full rounded-full text-base font-semibold"
           disabled={isSubmitting}
         >
-          {isSubmitting ? 'Entrando...' : 'Entrar'}
+          {isSubmitting ? "Entrando..." : "Entrar"}
         </Button>
       </form>
       <div className="mt-4 flex items-center justify-center gap-2">
@@ -65,5 +65,5 @@ export function LoginForm() {
         </Link>
       </div>
     </Card>
-  )
+  );
 }

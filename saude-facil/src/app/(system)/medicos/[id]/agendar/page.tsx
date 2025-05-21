@@ -1,64 +1,64 @@
-'use client'
-import Image from 'next/image'
-import { useParams } from 'next/navigation'
-import { useState } from 'react'
+"use client";
+import Image from "next/image";
+import { useParams } from "next/navigation";
+import { useState } from "react";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Label } from '@/components/ui/label'
+} from "@/components/ui/card";
+import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { Separator } from '@/components/ui/separator'
+} from "@/components/ui/select";
+import { Separator } from "@/components/ui/separator";
 import {
   useAppointments,
   useCreateAppointment,
-} from '@/hooks/https/use-appointment'
-import { useDoctor } from '@/hooks/https/use-doctor'
-import { useTimes } from '@/hooks/https/use-times'
-import { useCurretUser } from '@/hooks/utils/use-current-user'
+} from "@/hooks/https/use-appointment";
+import { useDoctor } from "@/hooks/https/use-doctor";
+import { useTimes } from "@/hooks/https/use-times";
+import { useCurretUser } from "@/hooks/utils/use-current-user";
 
 export default function Agendar() {
-  const [selectedTime, setSelectedTime] = useState('')
-  const params = useParams()
-  const { data: doctor } = useDoctor(Number(params.id))
-  const { data: times } = useTimes()
-  const { mutate: createAppointment } = useCreateAppointment()
-  const { data: appointments } = useAppointments()
-  const currentUser = useCurretUser()
+  const [selectedTime, setSelectedTime] = useState("");
+  const params = useParams();
+  const { data: doctor } = useDoctor(Number(params.id));
+  const { data: times } = useTimes();
+  const { mutate: createAppointment } = useCreateAppointment();
+  const { data: appointments } = useAppointments();
+  const currentUser = useCurretUser();
 
   const handleCreateAppointment = () => {
-    if (!selectedTime) return
+    if (!selectedTime) return;
 
     const selectedTimeData = times?.find(
       (time) => time.id.toString() === selectedTime,
-    )
-    if (!selectedTimeData) return
+    );
+    if (!selectedTimeData) return;
 
-    console.log(appointments)
+    console.log(appointments);
 
     createAppointment({
       medicoId: Number(params.id),
       data: selectedTimeData.data,
       hora: selectedTimeData.hora,
-      tipoConsulta: 'PRESENCIAL',
-      observacoes: 'Nenhuma observação',
+      tipoConsulta: "PRESENCIAL",
+      observacoes: "Nenhuma observação",
       pacienteId: currentUser?.pacienteId || 0,
-    })
-  }
+    });
+  };
 
   if (!doctor) {
-    return null
+    return null;
   }
 
   return (
@@ -67,7 +67,7 @@ export default function Agendar() {
         <CardHeader>
           <CardTitle className="text-2xl font-bold">Agendamento</CardTitle>
           <CardDescription>
-            Escolha uma data e um horário para agendar uma consulta com o Dr.{' '}
+            Escolha uma data e um horário para agendar uma consulta com o Dr.{" "}
             {doctor.nome}.
           </CardDescription>
         </CardHeader>
@@ -87,21 +87,21 @@ export default function Agendar() {
             </CardTitle>
             <ul className="text-muted-foreground mt-1 w-full space-y-1 text-sm">
               <li>
-                <span className="text-foreground font-medium">CRM:</span>{' '}
+                <span className="text-foreground font-medium">CRM:</span>{" "}
                 {doctor.crm}
               </li>
               <li>
-                <span className="text-foreground font-medium">Email:</span>{' '}
+                <span className="text-foreground font-medium">Email:</span>{" "}
                 {doctor.email}
               </li>
               <li>
-                <span className="text-foreground font-medium">Telefone:</span>{' '}
+                <span className="text-foreground font-medium">Telefone:</span>{" "}
                 {doctor.telefone}
               </li>
               <li>
                 <span className="text-foreground font-medium">
                   Data de Nascimento:
-                </span>{' '}
+                </span>{" "}
                 {doctor.dataNascimento}
               </li>
             </ul>
@@ -145,5 +145,5 @@ export default function Agendar() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

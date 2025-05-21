@@ -1,14 +1,14 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button'
-import { useAppointments } from '@/hooks/https/use-appointment'
+import { Button } from "@/components/ui/button";
+import { useAppointments } from "@/hooks/https/use-appointment";
 
-import { AppointmentCard } from './appointment-card'
+import { AppointmentCard } from "./appointment-card";
 
 export default function Agendamentos() {
-  const { data: appointments } = useAppointments()
+  const { data: appointments } = useAppointments();
 
   return (
     <div className="c-container py-16">
@@ -26,5 +26,5 @@ export default function Agendamentos() {
         ))}
       </div>
     </div>
-  )
+  );
 }

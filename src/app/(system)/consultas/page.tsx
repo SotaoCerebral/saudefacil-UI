@@ -1,11 +1,11 @@
-'use client'
+"use client";
 
-import { useAppointments } from '@/hooks/https/use-appointment'
+import { useAppointments } from "@/hooks/https/use-appointment";
 
-import { ConsultationCard } from './consultation-card'
+import { ConsultationCard } from "./consultation-card";
 
 export default function Consultas() {
-  const { data: appointments } = useAppointments()
+  const { data: appointments } = useAppointments();
 
   return (
     <div className="c-container py-16">
@@ -16,5 +16,5 @@ export default function Consultas() {
         ))}
       </div>
     </div>
-  )
+  );
 }

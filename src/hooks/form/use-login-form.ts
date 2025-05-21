@@ -1,15 +1,15 @@
-import { zodResolver } from '@hookform/resolvers/zod'
-import { useForm } from 'react-hook-form'
-import { z } from 'zod'
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useForm } from "react-hook-form";
+import { z } from "zod";
 
-import { useLogin } from '../https/use-login'
+import { useLogin } from "../https/use-login";
 
 const loginFormSchema = z.object({
-  email: z.string().email('Invalid email address'),
-  password: z.string().min(6, 'Password must be at least 6 characters'),
-})
+  email: z.string().email("Invalid email address"),
+  password: z.string().min(6, "Password must be at least 6 characters"),
+});
 
-type LoginFormData = z.infer<typeof loginFormSchema>
+type LoginFormData = z.infer<typeof loginFormSchema>;
 
 export function useLoginForm() {
   const {
@@ -18,13 +18,13 @@ export function useLoginForm() {
     formState: { errors, isSubmitting },
   } = useForm<LoginFormData>({
     resolver: zodResolver(loginFormSchema),
-  })
+  });
 
-  const { mutateAsync: login } = useLogin()
+  const { mutateAsync: login } = useLogin();
 
   const onSubmit = async (data: LoginFormData) => {
-    await login(data)
-  }
+    await login(data);
+  };
 
   return {
     register,
@@ -32,5 +32,5 @@ export function useLoginForm() {
     errors,
     isSubmitting,
     onSubmit,
-  }
+  };
 }

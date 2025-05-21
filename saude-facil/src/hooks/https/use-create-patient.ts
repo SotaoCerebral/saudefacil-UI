@@ -1,29 +1,29 @@
-import { useMutation } from '@tanstack/react-query'
+import { useMutation } from "@tanstack/react-query";
 
-import { api } from '@/lib/axios'
+import { api } from "@/lib/axios";
 
 interface CreatePatient {
-  email: string
-  senha: string
+  email: string;
+  senha: string;
   paciente: {
-    nomeCompleto: string
-    dataNascimento: string
-    cpf: string
-    genero: string
-    estadoCivil: string
-    telefone: string
-    email: string
-  }
+    nomeCompleto: string;
+    dataNascimento: string;
+    cpf: string;
+    genero: string;
+    estadoCivil: string;
+    telefone: string;
+    email: string;
+  };
 }
 
 function useCreatePatient() {
   return useMutation({
     mutationFn: async (data: CreatePatient) => {
-      const response = await api.post('/usuarios/criar-paciente', data)
+      const response = await api.post("/usuarios/criar-paciente", data);
 
-      return response.data
+      return response.data;
     },
-  })
+  });
 }
 
-export { useCreatePatient }
+export { useCreatePatient };

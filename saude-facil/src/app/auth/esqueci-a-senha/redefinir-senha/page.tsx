@@ -1,11 +1,11 @@
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export default function RedefinirSenha() {
   return (
@@ -39,5 +39,5 @@ export default function RedefinirSenha() {
         </Button>
       </form>
     </Card>
-  )
+  );
 }

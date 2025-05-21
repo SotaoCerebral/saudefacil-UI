@@ -1,33 +1,33 @@
-'use client'
+"use client";
 
-import { Paperclip, Wrench, X } from 'lucide-react'
-import React from 'react'
+import { Paperclip, Wrench, X } from "lucide-react";
+import React from "react";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { Label } from '@/components/ui/label'
-import { Textarea } from '@/components/ui/textarea'
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
 
 export default function Suporte() {
-  const [selectedFile, setSelectedFile] = React.useState<File | null>(null)
-  const [description, setDescription] = React.useState('')
+  const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
+  const [description, setDescription] = React.useState("");
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      setSelectedFile(e.target.files[0])
+      setSelectedFile(e.target.files[0]);
     }
-  }
+  };
 
   const handleRemoveFile = () => {
-    setSelectedFile(null)
-  }
+    setSelectedFile(null);
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
     // TODO: Implement form submission logic
-    console.log({ description, file: selectedFile })
-  }
+    console.log({ description, file: selectedFile });
+  };
 
   return (
     <div className="c-container py-16">
@@ -69,10 +69,10 @@ export default function Suporte() {
                     className="text-muted-foreground gap-2 text-sm"
                     type="button"
                     variant="outline"
-                    onClick={() => document.getElementById('imagem')?.click()}
+                    onClick={() => document.getElementById("imagem")?.click()}
                   >
                     <Paperclip className="size-4" />
-                    {selectedFile ? 'Alterar imagem' : 'Anexar imagem'}
+                    {selectedFile ? "Alterar imagem" : "Anexar imagem"}
                   </Button>
                 </label>
               </div>
@@ -98,5 +98,5 @@ export default function Suporte() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

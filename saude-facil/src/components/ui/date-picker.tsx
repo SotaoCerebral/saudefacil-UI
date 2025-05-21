@@ -1,35 +1,35 @@
-'use client'
+"use client";
 
-import { format } from 'date-fns'
-import { ptBR } from 'date-fns/locale/pt-BR'
-import { CalendarIcon } from 'lucide-react'
-import * as React from 'react'
+import { format } from "date-fns";
+import { ptBR } from "date-fns/locale/pt-BR";
+import { CalendarIcon } from "lucide-react";
+import * as React from "react";
 
-import { Button } from '@/components/ui/button'
-import { Calendar } from '@/components/ui/calendar'
+import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from '@/components/ui/popover'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/popover";
+import { cn } from "@/lib/utils";
 
 export function DatePicker() {
-  const [date, setDate] = React.useState<Date>()
+  const [date, setDate] = React.useState<Date>();
 
   return (
     <Popover>
       <PopoverTrigger asChild>
         <Button
-          variant={'outline'}
+          variant={"outline"}
           className={cn(
-            'w-full justify-start bg-white text-left font-normal text-black dark:bg-zinc-800 dark:text-white',
-            !date && 'text-muted-foreground dark:text-zinc-400',
+            "w-full justify-start bg-white text-left font-normal text-black dark:bg-zinc-800 dark:text-white",
+            !date && "text-muted-foreground dark:text-zinc-400",
           )}
         >
           <CalendarIcon className="text-muted-foreground dark:text-zinc-400" />
           {date ? (
-            format(date, 'PPP', { locale: ptBR })
+            format(date, "PPP", { locale: ptBR })
           ) : (
             <span className="text-muted-foreground dark:text-zinc-400">
               Selecione uma data
@@ -49,5 +49,5 @@ export function DatePicker() {
         />
       </PopoverContent>
     </Popover>
-  )
+  );
 }

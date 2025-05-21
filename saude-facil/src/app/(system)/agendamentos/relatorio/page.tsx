@@ -1,20 +1,20 @@
-'use client'
+"use client";
 
-import { Card } from '@/components/ui/card'
-import { DatePicker } from '@/components/ui/date-picker'
+import { Card } from "@/components/ui/card";
+import { DatePicker } from "@/components/ui/date-picker";
 
-import { InsuranceDistributionChart } from './insurance-distrubution-chart'
-import { SelectCategory } from './select-category'
-import { SelectInsurance } from './select-insurance'
+import { InsuranceDistributionChart } from "./insurance-distrubution-chart";
+import { SelectCategory } from "./select-category";
+import { SelectInsurance } from "./select-insurance";
 
 const mockData = [
-  { name: 'Unimed', value: 245 },
-  { name: 'Amil', value: 180 },
-  { name: 'SulAmérica', value: 120 },
-  { name: 'Bradesco Saúde', value: 95 },
-  { name: 'NotreDame', value: 75 },
-  { name: 'Outros', value: 45 },
-]
+  { name: "Unimed", value: 245 },
+  { name: "Amil", value: 180 },
+  { name: "SulAmérica", value: 120 },
+  { name: "Bradesco Saúde", value: 95 },
+  { name: "NotreDame", value: 75 },
+  { name: "Outros", value: 45 },
+];
 
 export default function Relatorio() {
   return (
@@ -31,5 +31,5 @@ export default function Relatorio() {
         <InsuranceDistributionChart data={mockData} />
       </Card>
     </main>
-  )
+  );
 }

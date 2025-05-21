@@ -1,13 +1,13 @@
-import Link from 'next/link'
+import Link from "next/link";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
 export default function EsqueceuSenha() {
   return (
@@ -33,11 +33,11 @@ export default function EsqueceuSenha() {
           className="mt-2 w-full rounded-full px-0 text-base font-semibold"
         >
           <Link className="w-full" href="/auth/esqueci-a-senha/redefinir-senha">
-            {' '}
-            Enviar{' '}
+            {" "}
+            Enviar{" "}
           </Link>
         </Button>
       </form>
     </Card>
-  )
+  );
 }

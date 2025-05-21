@@ -1,38 +1,38 @@
-import { useQuery } from '@tanstack/react-query'
+import { useQuery } from "@tanstack/react-query";
 
-import { api } from '@/lib/axios'
+import { api } from "@/lib/axios";
 
 interface Doctor {
-  id: number
-  nome: string
-  cpf: string
-  crm: string
-  email: string
-  telefone: string
-  dataNascimento: string
-  especialidade: string
+  id: number;
+  nome: string;
+  cpf: string;
+  crm: string;
+  email: string;
+  telefone: string;
+  dataNascimento: string;
+  especialidade: string;
 }
 
 function useDoctors() {
   return useQuery({
-    queryKey: ['doctors'],
+    queryKey: ["doctors"],
     queryFn: async () => {
-      const response = await api.get<Doctor[]>('/medicos')
+      const response = await api.get<Doctor[]>("/medicos");
 
-      return response.data as Doctor[]
+      return response.data as Doctor[];
     },
-  })
+  });
 }
 
 function useDoctor(id: number) {
   return useQuery({
-    queryKey: ['doctor', id],
+    queryKey: ["doctor", id],
     queryFn: async () => {
-      const response = await api.get<Doctor>(`/medicos/${id}`)
+      const response = await api.get<Doctor>(`/medicos/${id}`);
 
-      return response.data as Doctor
+      return response.data as Doctor;
     },
-  })
+  });
 }
 
-export { useDoctor, useDoctors }
+export { useDoctor, useDoctors };

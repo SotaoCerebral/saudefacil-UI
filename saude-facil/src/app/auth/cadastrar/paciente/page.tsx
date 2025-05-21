@@ -1,18 +1,18 @@
-'use client'
+"use client";
 
-import { Button } from '@/components/ui/button'
+import { Button } from "@/components/ui/button";
 import {
   Card,
   CardDescription,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
-import { useCreatePatientForm } from '@/hooks/form/use-create-patient-form'
+} from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { useCreatePatientForm } from "@/hooks/form/use-create-patient-form";
 
 export default function PacienteForm() {
   const { register, handleSubmit, errors, isSubmitting, onSubmit } =
-    useCreatePatientForm()
+    useCreatePatientForm();
 
   return (
     <Card className="w-[80vw] max-w-xl rounded-2xl p-8 shadow-lg">
@@ -29,7 +29,7 @@ export default function PacienteForm() {
         className="flex w-full flex-col gap-4"
       >
         <Input
-          {...register('email')}
+          {...register("email")}
           type="email"
           placeholder="E-mail"
           required
@@ -39,7 +39,7 @@ export default function PacienteForm() {
           <span className="text-sm text-red-500">{errors.email.message}</span>
         )}
         <Input
-          {...register('senha')}
+          {...register("senha")}
           type="password"
           placeholder="Senha"
           required
@@ -49,7 +49,7 @@ export default function PacienteForm() {
           <span className="text-sm text-red-500">{errors.senha.message}</span>
         )}
         <Input
-          {...register('paciente.nomeCompleto')}
+          {...register("paciente.nomeCompleto")}
           type="text"
           placeholder="Nome completo"
           required
@@ -61,7 +61,7 @@ export default function PacienteForm() {
           </span>
         )}
         <Input
-          {...register('paciente.dataNascimento')}
+          {...register("paciente.dataNascimento")}
           type="date"
           required
           className="focus:ring-primary rounded-full border-none bg-gray-200 px-6 py-3 text-base focus:ring-2"
@@ -72,7 +72,7 @@ export default function PacienteForm() {
           </span>
         )}
         <Input
-          {...register('paciente.cpf')}
+          {...register("paciente.cpf")}
           type="text"
           placeholder="CPF"
           required
@@ -84,7 +84,7 @@ export default function PacienteForm() {
           </span>
         )}
         <Input
-          {...register('paciente.genero')}
+          {...register("paciente.genero")}
           type="text"
           placeholder="Gênero"
           required
@@ -96,7 +96,7 @@ export default function PacienteForm() {
           </span>
         )}
         <Input
-          {...register('paciente.estadoCivil')}
+          {...register("paciente.estadoCivil")}
           type="text"
           placeholder="Estado civil"
           required
@@ -108,7 +108,7 @@ export default function PacienteForm() {
           </span>
         )}
         <Input
-          {...register('paciente.telefone')}
+          {...register("paciente.telefone")}
           type="text"
           placeholder="Telefone"
           required
@@ -124,9 +124,9 @@ export default function PacienteForm() {
           disabled={isSubmitting}
           className="mt-2 w-full rounded-full text-base font-semibold"
         >
-          {isSubmitting ? 'Criando conta...' : 'Criar conta'}
+          {isSubmitting ? "Criando conta..." : "Criar conta"}
         </Button>
       </form>
     </Card>
-  )
+  );
 }

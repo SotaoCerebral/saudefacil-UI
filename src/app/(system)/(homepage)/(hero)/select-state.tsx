@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
+} from "@/components/ui/select";
 
 function SelectState() {
   return (
@@ -29,7 +29,7 @@ function SelectState() {
         <SelectItem value="pernambuco">Pernambuco</SelectItem>
       </SelectContent>
     </Select>
-  )
+  );
 }
 
-export { SelectState }
+export { SelectState };

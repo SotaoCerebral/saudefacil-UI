@@ -1,5 +1,5 @@
-import { Noticias } from '@/components/core/Noticias'
+import { Noticias } from "@/components/core/Noticias";
 
 export default function NoticiasPage() {
-  return <Noticias />
+  return <Noticias />;
 }

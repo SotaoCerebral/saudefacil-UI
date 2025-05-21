@@ -1,53 +1,53 @@
-'use client'
-import Image from 'next/image'
-import { useEffect, useRef, useState } from 'react'
+"use client";
+import Image from "next/image";
+import { useEffect, useRef, useState } from "react";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent } from '@/components/ui/card'
-import { Input } from '@/components/ui/input'
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
 
-const LOCAL_STORAGE_KEY = 'chat-messages'
+const LOCAL_STORAGE_KEY = "chat-messages";
 
 export type Message = {
-  sender: 'doctor' | 'patient'
-  text: string
-}
+  sender: "doctor" | "patient";
+  text: string;
+};
 
 export default function Chat() {
-  const [messages, setMessages] = useState<Message[]>([])
-  const [input, setInput] = useState('')
-  const messagesEndRef = useRef<HTMLDivElement>(null)
+  const [messages, setMessages] = useState<Message[]>([]);
+  const [input, setInput] = useState("");
+  const messagesEndRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    const stored = localStorage.getItem(LOCAL_STORAGE_KEY)
+    const stored = localStorage.getItem(LOCAL_STORAGE_KEY);
     const welcomeMessage = {
-      sender: 'doctor' as const,
-      text: 'Olá! Bem-vindo(a) ao chat. Como posso ajudar você hoje?',
-    }
+      sender: "doctor" as const,
+      text: "Olá! Bem-vindo(a) ao chat. Como posso ajudar você hoje?",
+    };
 
     if (stored) {
-      const parsedMessages = JSON.parse(stored)
+      const parsedMessages = JSON.parse(stored);
       // Check if first message is from doctor, if not add welcome message
-      if (parsedMessages[0]?.sender !== 'doctor') {
-        setMessages([welcomeMessage, ...parsedMessages])
+      if (parsedMessages[0]?.sender !== "doctor") {
+        setMessages([welcomeMessage, ...parsedMessages]);
       } else {
-        setMessages(parsedMessages)
+        setMessages(parsedMessages);
       }
     } else {
-      setMessages([welcomeMessage])
+      setMessages([welcomeMessage]);
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(messages))
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
-  }, [messages])
+    localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(messages));
+    messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
+  }, [messages]);
 
   function handleSend(e?: React.FormEvent) {
-    e?.preventDefault()
-    if (!input.trim()) return
-    setMessages((prev) => [...prev, { sender: 'patient', text: input.trim() }])
-    setInput('')
+    e?.preventDefault();
+    if (!input.trim()) return;
+    setMessages((prev) => [...prev, { sender: "patient", text: input.trim() }]);
+    setInput("");
   }
 
   return (
@@ -67,9 +67,9 @@ export default function Chat() {
           {messages.map((msg, idx) => (
             <div
               key={idx}
-              className={`flex items-end ${msg.sender === 'doctor' ? 'justify-start' : 'justify-end'}`}
+              className={`flex items-end ${msg.sender === "doctor" ? "justify-start" : "justify-end"}`}
             >
-              {msg.sender === 'doctor' && (
+              {msg.sender === "doctor" && (
                 <Image
                   src="/doctor.png"
                   alt="Doutor"
@@ -79,11 +79,11 @@ export default function Chat() {
                 />
               )}
               <div
-                className={`max-w-[70%] rounded-2xl px-3 py-2 text-xs sm:px-4 sm:text-sm ${msg.sender === 'doctor' ? 'bg-muted text-left' : 'bg-primary text-primary-foreground text-right'}`}
+                className={`max-w-[70%] rounded-2xl px-3 py-2 text-xs sm:px-4 sm:text-sm ${msg.sender === "doctor" ? "bg-muted text-left" : "bg-primary text-primary-foreground text-right"}`}
               >
                 {msg.text}
               </div>
-              {msg.sender === 'patient' && (
+              {msg.sender === "patient" && (
                 <Image
                   src="/patient.jpg"
                   alt="Paciente"
@@ -103,7 +103,7 @@ export default function Chat() {
             value={input}
             onChange={(e) => setInput(e.target.value)}
             onKeyDown={(e) => {
-              if (e.key === 'Enter' && !e.shiftKey) handleSend(e)
+              if (e.key === "Enter" && !e.shiftKey) handleSend(e);
             }}
             autoFocus
           />
@@ -131,5 +131,5 @@ export default function Chat() {
         </form>
       </Card>
     </div>
-  )
+  );
 }

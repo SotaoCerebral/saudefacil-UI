@@ -1,4 +1,4 @@
-import { OptionCard } from './option-card'
+import { OptionCard } from "./option-card";
 
 function Options() {
   return (
@@ -8,7 +8,7 @@ function Options() {
         <OptionCard />
       </div>
     </section>
-  )
+  );
 }
 
-export { Options }
+export { Options };

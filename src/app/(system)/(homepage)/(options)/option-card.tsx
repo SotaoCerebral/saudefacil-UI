@@ -1,5 +1,5 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
 function OptionCard() {
   return (
@@ -15,7 +15,7 @@ function OptionCard() {
         <p className="text-sm font-semibold text-white">Saúde Fácil</p>
       </div>
     </Link>
-  )
+  );
 }
 
-export { OptionCard }
+export { OptionCard };

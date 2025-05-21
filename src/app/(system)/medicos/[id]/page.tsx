@@ -1,24 +1,24 @@
-'use client'
+"use client";
 
-import Image from 'next/image'
-import Link from 'next/link'
-import { useParams } from 'next/navigation'
+import Image from "next/image";
+import Link from "next/link";
+import { useParams } from "next/navigation";
 
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
-import { useDoctor } from '@/hooks/https/use-doctor'
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { useDoctor } from "@/hooks/https/use-doctor";
 
 export default function DoctorPage() {
-  const { id } = useParams<{ id: string }>()
+  const { id } = useParams<{ id: string }>();
 
-  const { data: doctor, isLoading } = useDoctor(Number(id))
+  const { data: doctor, isLoading } = useDoctor(Number(id));
 
   if (isLoading) {
-    return <div>Carregando...</div>
+    return <div>Carregando...</div>;
   }
 
   if (!doctor) {
-    return <div>Médico não encontrado</div>
+    return <div>Médico não encontrado</div>;
   }
 
   return (
@@ -40,21 +40,21 @@ export default function DoctorPage() {
             </CardTitle>
             <ul className="text-muted-foreground mt-1 space-y-1 text-sm">
               <li>
-                <span className="text-foreground font-medium">CRM:</span>{' '}
+                <span className="text-foreground font-medium">CRM:</span>{" "}
                 {doctor.crm}
               </li>
               <li>
-                <span className="text-foreground font-medium">Email:</span>{' '}
+                <span className="text-foreground font-medium">Email:</span>{" "}
                 {doctor.email}
               </li>
               <li>
-                <span className="text-foreground font-medium">Telefone:</span>{' '}
+                <span className="text-foreground font-medium">Telefone:</span>{" "}
                 {doctor.telefone}
               </li>
               <li>
                 <span className="text-foreground font-medium">
                   Data de Nascimento:
-                </span>{' '}
+                </span>{" "}
                 {doctor.dataNascimento}
               </li>
             </ul>
@@ -78,15 +78,15 @@ export default function DoctorPage() {
               </h3>
               <ul className="mb-4 list-disc pl-5 text-sm">
                 <li>
-                  Consulta inicial:{' '}
+                  Consulta inicial:{" "}
                   <span className="text-foreground font-medium">R$ 150,00</span>
                 </li>
                 <li>
-                  Sessão avulsa:{' '}
+                  Sessão avulsa:{" "}
                   <span className="text-foreground font-medium">R$ 100,00</span>
                 </li>
                 <li>
-                  Pacote mensal (8 sessões):{' '}
+                  Pacote mensal (8 sessões):{" "}
                   <span className="text-foreground font-medium">R$ 700,00</span>
                 </li>
               </ul>
@@ -104,7 +104,7 @@ export default function DoctorPage() {
               </h3>
               <ul className="list-none space-y-2 pl-0 text-sm">
                 <li className="flex flex-col gap-2">
-                  <span className="text-yellow-400">⭐⭐⭐⭐⭐</span>{' '}
+                  <span className="text-yellow-400">⭐⭐⭐⭐⭐</span>{" "}
                   &quot;Excelente profissional, muito atencioso!&quot;
                 </li>
                 <li className="flex flex-col gap-2">
@@ -112,7 +112,7 @@ export default function DoctorPage() {
                   atendimento e resultados visíveis.&quot;
                 </li>
                 <li className="flex flex-col gap-2">
-                  <span className="text-yellow-400">⭐⭐⭐⭐⭐</span>{' '}
+                  <span className="text-yellow-400">⭐⭐⭐⭐⭐</span>{" "}
                   &quot;Recomendo para todos que precisam de fisioterapia.&quot;
                 </li>
               </ul>
@@ -124,5 +124,5 @@ export default function DoctorPage() {
         </CardContent>
       </Card>
     </div>
-  )
+  );
 }

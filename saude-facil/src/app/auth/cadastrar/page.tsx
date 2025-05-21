@@ -1,7 +1,7 @@
-import Image from 'next/image'
-import Link from 'next/link'
+import Image from "next/image";
+import Link from "next/link";
 
-import { Card } from '@/components/ui/card'
+import { Card } from "@/components/ui/card";
 
 export default function Register() {
   return (
@@ -38,5 +38,5 @@ export default function Register() {
         </Link>
       </section>
     </main>
-  )
+  );
 }

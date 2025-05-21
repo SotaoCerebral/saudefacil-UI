@@ -1,4 +1,4 @@
-import Link from 'next/link'
+import Link from "next/link";
 
 import {
   NavigationMenu,
@@ -6,52 +6,51 @@ import {
   NavigationMenuLink,
   NavigationMenuList,
   navigationMenuTriggerStyle,
-} from '@/components/ui/navigation-menu'
-import { SheetClose } from '@/components/ui/sheet'
-import { useCurretUser } from '@/hooks/utils/use-current-user'
-import { cn } from '@/lib/utils'
+} from "@/components/ui/navigation-menu";
+import { SheetClose } from "@/components/ui/sheet";
+import { useCurretUser } from "@/hooks/utils/use-current-user";
+import { cn } from "@/lib/utils";
 
-import { ProfileDropdown } from './profile-dropdown'
-import { usePathname } from 'next/navigation'
+import { ProfileDropdown } from "./profile-dropdown";
+import { usePathname } from "next/navigation";
 
 const navMenuItems = [
   {
-    label: 'Agendamentos',
-    href: '/agendamentos',
+    label: "Agendamentos",
+    href: "/agendamentos",
   },
   {
-    label: 'Consultas',
-    href: '/consultas',
+    label: "Consultas",
+    href: "/consultas",
   },
   {
-    label: 'Médicos',
-    href: '/medicos',
+    label: "Médicos",
+    href: "/medicos",
   },
   {
-    label: 'Sobre',
-    href: '/sobre',
+    label: "Sobre",
+    href: "/sobre",
   },
-
-]
+];
 
 function NavMenu() {
-  const user = useCurretUser()
-  const pathname = usePathname()
-  const isHomePage = pathname === '/'
+  const user = useCurretUser();
+  const pathname = usePathname();
+  const isHomePage = pathname === "/";
 
   return (
     <NavigationMenu className="hidden md:flex">
       <NavigationMenuList>
         {user?.pacienteId ? (
           navMenuItems
-            .filter((item) => item.href !== '/agendamentos')
+            .filter((item) => item.href !== "/agendamentos")
             .map((item) => (
               <NavigationMenuItem key={item.href}>
                 <NavigationMenuLink
                   asChild
                   className={cn(
                     navigationMenuTriggerStyle(),
-                    'bg-primary text-primary-foreground transition-all duration-300',
+                    "bg-primary text-primary-foreground transition-all duration-300",
                   )}
                 >
                   <Link href={item.href}>{item.label}</Link>
@@ -59,71 +58,71 @@ function NavMenu() {
               </NavigationMenuItem>
             ))
         ) : user?.medicoId ? (
-  <>
-    {navMenuItems
-      .filter(
-        (item) => item.href !== '/consultas' && item.href !== '/medicos',
-      )
-      .map((item) => (
-        <NavigationMenuItem key={item.href}>
-          <NavigationMenuLink
-            asChild
-            className={cn(
-              navigationMenuTriggerStyle(),
-              'bg-primary text-primary-foreground transition-all duration-300',
+          <>
+            {navMenuItems
+              .filter(
+                (item) =>
+                  item.href !== "/consultas" && item.href !== "/medicos",
+              )
+              .map((item) => (
+                <NavigationMenuItem key={item.href}>
+                  <NavigationMenuLink
+                    asChild
+                    className={cn(
+                      navigationMenuTriggerStyle(),
+                      "bg-primary text-primary-foreground transition-all duration-300",
+                    )}
+                  >
+                    <Link href={item.href}>{item.label}</Link>
+                  </NavigationMenuLink>
+                </NavigationMenuItem>
+              ))}
+
+            {/* Link extra para médicos */}
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-primary text-primary-foreground transition-all duration-300",
+                )}
+              >
+                <Link href="/horarios-disponiveis">Cadastrar Horário</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+          </>
+        ) : (
+          <>
+            <NavigationMenuItem>
+              <NavigationMenuLink
+                asChild
+                className={cn(
+                  navigationMenuTriggerStyle(),
+                  "bg-primary text-primary-foreground transition-all duration-300",
+                )}
+              >
+                <Link href="/sobre">Sobre</Link>
+              </NavigationMenuLink>
+            </NavigationMenuItem>
+
+            {isHomePage && (
+              <NavigationMenuItem>
+                <NavigationMenuLink
+                  asChild
+                  className={cn(
+                    navigationMenuTriggerStyle(),
+                    "bg-primary text-primary-foreground transition-all duration-300",
+                  )}
+                >
+                  <Link href="/noticias">Notícias</Link>
+                </NavigationMenuLink>
+              </NavigationMenuItem>
             )}
-          >
-            <Link href={item.href}>{item.label}</Link>
-          </NavigationMenuLink>
-        </NavigationMenuItem>
-      ))}
-
-    {/* Link extra para médicos */}
-    <NavigationMenuItem>
-      <NavigationMenuLink
-        asChild
-        className={cn(
-          navigationMenuTriggerStyle(),
-          'bg-primary text-primary-foreground transition-all duration-300',
-        )}
-      >
-        <Link href="/horarios-disponiveis">Cadastrar Horário</Link>
-      </NavigationMenuLink>
-    </NavigationMenuItem>
-  </>
-)  : (
-         <>
-  <NavigationMenuItem>
-    <NavigationMenuLink
-      asChild
-      className={cn(
-        navigationMenuTriggerStyle(),
-        'bg-primary text-primary-foreground transition-all duration-300',
-      )}
-    >
-      <Link href="/sobre">Sobre</Link>
-    </NavigationMenuLink>
-  </NavigationMenuItem>
-
-  {isHomePage && (
-    <NavigationMenuItem>
-      <NavigationMenuLink
-        asChild
-        className={cn(
-          navigationMenuTriggerStyle(),
-          'bg-primary text-primary-foreground transition-all duration-300',
-        )}
-      >
-        <Link href="/noticias">Notícias</Link>
-      </NavigationMenuLink>
-    </NavigationMenuItem>
-  )}
-</>
-
+          </>
         )}
       </NavigationMenuList>
     </NavigationMenu>
-  )
+  );
 }
 
 function MobileNavMenu() {
@@ -145,7 +144,7 @@ function MobileNavMenu() {
         <ProfileDropdown />
       </div>
     </div>
-  )
+  );
 }
 
-export { MobileNavMenu, NavMenu }
+export { MobileNavMenu, NavMenu };
