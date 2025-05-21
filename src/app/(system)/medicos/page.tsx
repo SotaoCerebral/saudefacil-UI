@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { useState } from "react";
+import { useState } from 'react'
 
 import {
   Select,
@@ -8,19 +8,19 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { useDoctors } from "@/hooks/https/use-doctor";
+} from '@/components/ui/select'
+import { useDoctors } from '@/hooks/https/use-doctor'
 
-import { DoctorCard } from "./doctor-card";
+import { DoctorCard } from './doctor-card'
 
 export default function Consultas() {
-  const { data: doctors } = useDoctors();
-  const [selectedSpecialty, setSelectedSpecialty] = useState("TODAS");
+  const { data: doctors } = useDoctors()
+  const [selectedSpecialty, setSelectedSpecialty] = useState('TODAS')
 
   const filteredDoctors =
-    selectedSpecialty === "TODAS"
+    selectedSpecialty === 'TODAS'
       ? doctors
-      : doctors?.filter((doctor) => doctor.especialidade === selectedSpecialty);
+      : doctors?.filter((doctor) => doctor.especialidade === selectedSpecialty)
 
   return (
     <div className="c-container py-16">
@@ -53,5 +53,5 @@ export default function Consultas() {
         )}
       </div>
     </div>
-  );
+  )
 }

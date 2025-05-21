@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
 function SelectSpecialist() {
   return (
@@ -25,7 +25,7 @@ function SelectSpecialist() {
         <SelectItem value="endocrinologia">Endocrinologia</SelectItem>
       </SelectContent>
     </Select>
-  );
+  )
 }
 
-export { SelectSpecialist };
+export { SelectSpecialist }

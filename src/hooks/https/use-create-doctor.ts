@@ -1,29 +1,29 @@
-import { useMutation } from "@tanstack/react-query";
+import { useMutation } from '@tanstack/react-query'
 
-import { api } from "@/lib/axios";
+import { api } from '@/lib/axios'
 
 interface CreateDoctor {
-  email: string;
-  senha: string;
+  email: string
+  senha: string
   medico: {
-    nome: string;
-    cpf: string;
-    crm: string;
-    email: string;
-    telefone: string;
-    dataNascimento: string;
-    especialidade: string;
-  };
+    nome: string
+    cpf: string
+    crm: string
+    email: string
+    telefone: string
+    dataNascimento: string
+    especialidade: string
+  }
 }
 
 function useCreateDoctor() {
   return useMutation({
     mutationFn: async (data: CreateDoctor) => {
-      const response = await api.post("/usuarios", data);
+      const response = await api.post('/usuarios', data)
 
-      return response.data;
+      return response.data
     },
-  });
+  })
 }
 
-export { useCreateDoctor };
+export { useCreateDoctor }

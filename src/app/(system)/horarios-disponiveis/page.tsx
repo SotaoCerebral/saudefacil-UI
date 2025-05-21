@@ -1,23 +1,24 @@
-"use client";
+'use client'
 
-import { useState } from "react";
-import axios from "axios";
-import { useRouter } from "next/navigation";
-import { useCurretUser } from "@/hooks/utils/use-current-user";
+import axios from 'axios'
+import { useRouter } from 'next/navigation'
+import { useState } from 'react'
+
+import { useCurretUser } from '@/hooks/utils/use-current-user'
 
 export default function HorariosDisponiveisPage() {
-  const user = useCurretUser();
-  const router = useRouter();
+  const user = useCurretUser()
+  const router = useRouter()
 
-  const [data, setData] = useState("");
-  const [hora, setHora] = useState("");
+  const [data, setData] = useState('')
+  const [hora, setHora] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+    e.preventDefault()
 
-    if (!user || user.role !== "ADMIN") {
-      alert("Apenas médicos podem cadastrar horários.");
-      return;
+    if (!user || user.role !== 'ADMIN') {
+      alert('Apenas médicos podem cadastrar horários.')
+      return
     }
 
     const payload = {
@@ -25,28 +26,28 @@ export default function HorariosDisponiveisPage() {
       data,
       hora,
       disponivel: true,
-    };
+    }
 
     try {
-      const response = await axios.post(
-        "https://saudefacil.onrender.com/horarios-disponiveis",
-        null, // corpo vazio
+      await axios.post(
+        'https://saudefacil.onrender.com/horarios-disponiveis',
+        null,
         { params: payload },
-      );
+      )
 
-      alert("Horário cadastrado com sucesso!");
-      setData("");
-      setHora("");
-      router.push("/agendamentos"); // ou a tela que quiser
+      alert('Horário cadastrado com sucesso!')
+      setData('')
+      setHora('')
+      router.push('/agendamentos')
     } catch (error) {
-      console.error("Erro ao cadastrar horário:", error);
-      alert("Erro ao cadastrar horário");
+      console.error('Erro ao cadastrar horário:', error)
+      alert('Erro ao cadastrar horário')
     }
-  };
+  }
 
   // Protege a página
-  if (!user || user.role !== "ADMIN") {
-    return <p className="mt-10 text-center">Acesso restrito para médicos.</p>;
+  if (!user || user.role !== 'ADMIN') {
+    return <p className="mt-10 text-center">Acesso restrito para médicos.</p>
   }
 
   return (
@@ -83,5 +84,5 @@ export default function HorariosDisponiveisPage() {
         </button>
       </form>
     </div>
-  );
+  )
 }

@@ -1,23 +1,23 @@
-"use client";
+'use client'
 
-import { useEffect, useState } from "react";
-import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
+import { useEffect, useState } from 'react'
+import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts'
 
 const COLORS = [
-  "#00C49F",
-  "#FFBB28",
-  "#FF8042",
-  "#0088FE",
-  "#FF6B6B",
-  "#6B66FF",
-];
+  '#00C49F',
+  '#FFBB28',
+  '#FF8042',
+  '#0088FE',
+  '#FF6B6B',
+  '#6B66FF',
+]
 
 interface TooltipProps {
-  active?: boolean;
+  active?: boolean
   payload?: Array<{
-    value: number;
-    name: string;
-  }>;
+    value: number
+    name: string
+  }>
 }
 
 const CustomTooltip = ({ active, payload }: TooltipProps) => {
@@ -27,38 +27,38 @@ const CustomTooltip = ({ active, payload }: TooltipProps) => {
         <div className="flex flex-col">
           <span className="text-[10px] sm:text-xs">Total de consultas:</span>
           <span className="text-xs font-bold sm:text-sm">
-            {payload[0].value.toLocaleString("pt-BR")}
+            {payload[0].value.toLocaleString('pt-BR')}
           </span>
         </div>
       </div>
-    );
+    )
   }
-  return null;
-};
+  return null
+}
 
 const useIsMobile = () => {
-  const [isMobile, setIsMobile] = useState(false);
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const checkMobile = () =>
-      setIsMobile(window.matchMedia("(max-width: 640px)").matches);
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
+      setIsMobile(window.matchMedia('(max-width: 640px)').matches)
+    checkMobile()
+    window.addEventListener('resize', checkMobile)
+    return () => window.removeEventListener('resize', checkMobile)
+  }, [])
 
-  return isMobile;
-};
+  return isMobile
+}
 
 export function InsuranceDistributionChart({
   data,
 }: {
-  data: { name: string; value: number }[];
+  data: { name: string; value: number }[]
 }) {
-  const isMobile = useIsMobile();
+  const isMobile = useIsMobile()
 
   return (
-    <div className={`w-full ${isMobile ? "h-[220px]" : "h-[400px]"}`}>
+    <div className={`w-full ${isMobile ? 'h-[220px]' : 'h-[400px]'}`}>
       <ResponsiveContainer width="100%" height="100%">
         <PieChart>
           <Pie
@@ -67,7 +67,7 @@ export function InsuranceDistributionChart({
             cy="50%"
             labelLine={false}
             label={({ name, percent }) => {
-              return `${name} ${(percent * 100).toFixed(0)}%`;
+              return `${name} ${(percent * 100).toFixed(0)}%`
             }}
             outerRadius={isMobile ? 80 : 150}
             fill="#8884d8"
@@ -85,5 +85,5 @@ export function InsuranceDistributionChart({
         </PieChart>
       </ResponsiveContainer>
     </div>
-  );
+  )
 }

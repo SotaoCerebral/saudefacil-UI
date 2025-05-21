@@ -1,12 +1,12 @@
-"use client";
+'use client'
 
-import { Hero } from "./(hero)/hero";
-import { Options } from "./(options)/options";
+import { Hero } from './(hero)/hero'
+import { Options } from './(options)/options'
 export default function Home() {
   return (
     <div>
       <Hero />
       <Options />
     </div>
-  );
+  )
 }

@@ -1,28 +1,28 @@
-"use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+'use client'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+} from '@/components/ui/card'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/select'
+import { Separator } from '@/components/ui/separator'
 
 export default function Pagamento() {
-  const router = useRouter();
+  const router = useRouter()
   return (
     <div className="c-container flex flex-col items-center justify-center py-8 md:py-16">
       <Card className="w-full">
@@ -70,8 +70,8 @@ export default function Pagamento() {
           <form
             className="flex flex-1 flex-col justify-center gap-4"
             onSubmit={(e) => {
-              e.preventDefault();
-              router.push("/consultas");
+              e.preventDefault()
+              router.push('/consultas')
             }}
           >
             <div className="flex flex-col gap-2">
@@ -164,5 +164,5 @@ export default function Pagamento() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

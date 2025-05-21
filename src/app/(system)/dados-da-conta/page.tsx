@@ -1,34 +1,34 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import { useState } from "react";
+import Image from 'next/image'
+import { useState } from 'react'
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { DatePicker } from "@/components/ui/date-picker";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
+import { DatePicker } from '@/components/ui/date-picker'
+import { Input } from '@/components/ui/input'
+import { Label } from '@/components/ui/label'
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
-import { Textarea } from "@/components/ui/textarea";
+} from '@/components/ui/select'
+import { Textarea } from '@/components/ui/textarea'
 
-const isDoctor = true;
+const isDoctor = true
 
 function ProfilePhotoUpload() {
-  const [photo, setPhoto] = useState<string | null>(null);
+  const [photo, setPhoto] = useState<string | null>(null)
 
   const handlePhotoChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.files && e.target.files[0]) {
-      const reader = new FileReader();
-      reader.onload = (ev) => setPhoto(ev.target?.result as string);
-      reader.readAsDataURL(e.target.files[0]);
+      const reader = new FileReader()
+      reader.onload = (ev) => setPhoto(ev.target?.result as string)
+      reader.readAsDataURL(e.target.files[0])
     }
-  };
+  }
 
   return (
     <div className="flex flex-col items-center gap-2">
@@ -59,7 +59,7 @@ function ProfilePhotoUpload() {
         />
       </label>
     </div>
-  );
+  )
 }
 
 function DoctorForm() {
@@ -134,7 +134,7 @@ function DoctorForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 function PatientForm() {
@@ -202,7 +202,7 @@ function PatientForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
 export default function DadosDaContaPage() {
@@ -223,5 +223,5 @@ export default function DadosDaContaPage() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

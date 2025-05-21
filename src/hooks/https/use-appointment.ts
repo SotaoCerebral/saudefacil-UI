@@ -1,52 +1,52 @@
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { useRouter } from "next/navigation";
+import { useMutation, useQuery } from '@tanstack/react-query'
+import { useRouter } from 'next/navigation'
 
-import { api } from "@/lib/axios";
-import { queryClient } from "@/lib/query";
+import { api } from '@/lib/axios'
+import { queryClient } from '@/lib/query'
 
 interface Appointment {
-  id: number;
-  pacientId: number;
-  medicoId: number;
-  dataHora: string;
-  status: string;
-  tipoConsulta: string;
-  observacoes: string | null;
+  id: number
+  pacientId: number
+  medicoId: number
+  dataHora: string
+  status: string
+  tipoConsulta: string
+  observacoes: string | null
 }
 
 interface CreateAppointment {
-  pacienteId: number;
-  medicoId: number;
-  data: string; // 2025-06-24
-  hora: string; // 16:30
-  tipoConsulta: string; // PRESENCIAL
-  observacoes: string;
+  pacienteId: number
+  medicoId: number
+  data: string // 2025-06-24
+  hora: string // 16:30
+  tipoConsulta: string // PRESENCIAL
+  observacoes: string
 }
 
 function useAppointments() {
   return useQuery({
-    queryKey: ["appointments"],
+    queryKey: ['appointments'],
     queryFn: async () => {
-      const response = await api.get("/agendamentos");
+      const response = await api.get('/agendamentos')
 
-      return response.data as Appointment[];
+      return response.data as Appointment[]
     },
-  });
+  })
 }
 
 function useCreateAppointment() {
-  const router = useRouter();
+  const router = useRouter()
   return useMutation({
     mutationFn: async (data: CreateAppointment) => {
-      const response = await api.post("/agendamentos", null, { params: data });
+      const response = await api.post('/agendamentos', null, { params: data })
 
-      return response.data as Appointment;
+      return response.data as Appointment
     },
     onSuccess: (_, variables) => {
-      router.push(`/medicos/${variables.medicoId}/agendar/confirmacao`);
-      queryClient.invalidateQueries({ queryKey: ["appointments"] });
+      router.push(`/medicos/${variables.medicoId}/agendar/confirmacao`)
+      queryClient.invalidateQueries({ queryKey: ['appointments'] })
     },
-  });
+  })
 }
 
-export { useAppointments, useCreateAppointment };
+export { useAppointments, useCreateAppointment }

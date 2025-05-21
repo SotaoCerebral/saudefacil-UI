@@ -1,20 +1,20 @@
-"use client";
+'use client'
 
-import Image from "next/image";
-import Link from "next/link";
+import Image from 'next/image'
+import Link from 'next/link'
 
-import { Button } from "@/components/ui/button";
-import { Card, CardContent } from "@/components/ui/card";
-import { useDoctor } from "@/hooks/https/use-doctor";
+import { Button } from '@/components/ui/button'
+import { Card, CardContent } from '@/components/ui/card'
+import { useDoctor } from '@/hooks/https/use-doctor'
 
 interface Appointment {
-  id: number;
-  pacientId: number;
-  medicoId: number;
-  dataHora: string;
-  status: string;
-  tipoConsulta: string;
-  observacoes: string | null;
+  id: number
+  pacientId: number
+  medicoId: number
+  dataHora: string
+  status: string
+  tipoConsulta: string
+  observacoes: string | null
 }
 
 export function ConsultationCard({
@@ -23,14 +23,14 @@ export function ConsultationCard({
   medicoId,
   status,
 }: Appointment) {
-  const { data: doctor } = useDoctor(medicoId);
+  const { data: doctor } = useDoctor(medicoId)
 
   return (
     <Card className="mx-auto flex w-full flex-col items-start gap-6 bg-white px-8 py-6 md:flex-row">
       <div className="flex-shrink-0">
         <Image
-          src={"/doctor.png"}
-          alt={doctor?.nome || ""}
+          src={'/doctor.png'}
+          alt={doctor?.nome || ''}
           width={112}
           height={112}
           className="bg-muted h-20 w-20 rounded-xl object-cover md:h-28 md:w-28"
@@ -58,5 +58,5 @@ export function ConsultationCard({
         </Button>
       </CardContent>
     </Card>
-  );
+  )
 }

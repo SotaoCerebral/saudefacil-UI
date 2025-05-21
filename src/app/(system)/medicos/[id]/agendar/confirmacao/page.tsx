@@ -1,19 +1,19 @@
-"use client";
-import Image from "next/image";
-import { useRouter } from "next/navigation";
+'use client'
+import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   Card,
   CardContent,
   CardDescription,
   CardHeader,
   CardTitle,
-} from "@/components/ui/card";
-import { Separator } from "@/components/ui/separator";
+} from '@/components/ui/card'
+import { Separator } from '@/components/ui/separator'
 
 export default function Confirmacao() {
-  const router = useRouter();
+  const router = useRouter()
 
   return (
     <div className="c-container flex flex-col items-center justify-center py-8 md:py-16">
@@ -44,19 +44,19 @@ export default function Confirmacao() {
               <li>
                 <span className="text-foreground font-medium">
                   Localização:
-                </span>{" "}
+                </span>{' '}
                 São Caetano do Sul - São Paulo
               </li>
               <li>
                 <span className="text-foreground font-medium">
                   Experiência:
-                </span>{" "}
+                </span>{' '}
                 15 anos
               </li>
               <li>
                 <span className="text-foreground font-medium">
                   Atendimento:
-                </span>{" "}
+                </span>{' '}
                 Domiciliar ou Consultório
               </li>
             </ul>
@@ -90,7 +90,7 @@ export default function Confirmacao() {
                 className="w-full bg-cyan-400 text-white hover:bg-cyan-500"
                 onClick={() => {
                   // TODO: Handle confirmation
-                  router.push("/medicos/1/agendar/confirmacao/pagamento");
+                  router.push('/medicos/1/agendar/confirmacao/pagamento')
                 }}
               >
                 Confirmar Agendamento
@@ -107,5 +107,5 @@ export default function Confirmacao() {
         </CardContent>
       </Card>
     </div>
-  );
+  )
 }

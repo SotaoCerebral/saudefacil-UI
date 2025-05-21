@@ -1,24 +1,24 @@
-import { LogOut, MessageCircleQuestion, User } from "lucide-react";
-import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { LogOut, MessageCircleQuestion, User } from 'lucide-react'
+import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
-import { Button } from "@/components/ui/button";
+import { Button } from '@/components/ui/button'
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { useCurretUser } from "@/hooks/utils/use-current-user";
+} from '@/components/ui/dropdown-menu'
+import { useCurretUser } from '@/hooks/utils/use-current-user'
 
 function ProfileDropdown() {
-  const currentUser = useCurretUser();
-  const router = useRouter();
+  const currentUser = useCurretUser()
+  const router = useRouter()
 
   const handleLogout = () => {
-    localStorage.removeItem("auth");
-    router.push("/auth/login");
-  };
+    localStorage.removeItem('auth')
+    router.push('/auth/login')
+  }
 
   if (!currentUser?.pacienteId && !currentUser?.medicoId) {
     return (
@@ -30,7 +30,7 @@ function ProfileDropdown() {
           <Link href="/auth/cadastrar">Criar conta</Link>
         </Button>
       </div>
-    );
+    )
   }
 
   return (
@@ -61,7 +61,7 @@ function ProfileDropdown() {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  );
+  )
 }
 
-export { ProfileDropdown };
+export { ProfileDropdown }

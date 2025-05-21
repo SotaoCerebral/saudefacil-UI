@@ -4,7 +4,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from "@/components/ui/select";
+} from '@/components/ui/select'
 
 function SelectInsurance() {
   return (
@@ -18,7 +18,7 @@ function SelectInsurance() {
         <SelectItem value="bradesco">Bradesco</SelectItem>
       </SelectContent>
     </Select>
-  );
+  )
 }
 
-export { SelectInsurance };
+export { SelectInsurance }
