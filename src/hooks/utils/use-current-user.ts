@@ -4,6 +4,7 @@ interface User {
   email: string
   pacienteId: number
   medicoId: number
+  role?: 'ADMIN' | 'COMUM'
 }
 
 function useCurretUser() {
